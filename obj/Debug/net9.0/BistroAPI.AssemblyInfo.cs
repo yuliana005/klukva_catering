@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BistroAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+194fbc01c58a88b08446e96a74fb90c8b3f39ce6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f7d6dd04afe6853686284a7d0e5e92b5fc69089")]
 [assembly: System.Reflection.AssemblyProductAttribute("BistroAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BistroAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

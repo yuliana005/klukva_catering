@@ -72,7 +72,7 @@ public class OrdersController : ControllerBase
     }
     private async Task SendVkNotification(Order order)
     {
-        var token = "vk1.a.F4W5FBZdjbShH8DccBEdFX5j36wzF2fPBMgja6ClbAF8y1w2U8_rL8gZj2iu8VFZMOicwsHgFKPwGbL4aSXFZkmTPCeYl9O084Mhlu14I5flf-L-BfM2-Hxn26JsaxDKcrKLj4kns3uqegl2GfHo5yNmYHMKgc9T7EdL1XiRQdRQ7REkwcYLZXhVFt6MLseyeDsK-dGDN8THKzhm7G63Rw";  // Замените на ваш токен
+        var token = "vk1.a.nfVPLRl6EoBSG-njj6p-e9z5bKohFEyQvexsACYTsaXhx1zgmueggFUuJx0rk32wXrRmqes2lN76DUn09lfIsD5HH3_LRbFBvu4Ra3eSq_fE2eyvTA5XBRBfPbza3jESOfCk6G-NRQUTsyE18VEUhX8u0Zeg_dHuXaY-GZd9rogFjaqp7lgn2bVJIWXDSTR237vpyD1D4rgQ0VVPY4Wo9A";  // Замените на ваш токен
         var userId = 295381770;              // Замените на ваш ID ВК
 
         var message = $"🆕 Новый заказ #{order.Id}!\n\n" +
