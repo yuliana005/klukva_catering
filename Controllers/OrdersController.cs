@@ -52,7 +52,7 @@ public class OrdersController : ControllerBase
             // Сохраняем в базу
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
-
+            await SendVkNotification(order);
             Console.WriteLine($"✅ Заказ #{order.Id} сохранён в БД!");
 
             // Отправка уведомления в Telegram (заглушка)
