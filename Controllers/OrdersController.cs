@@ -63,10 +63,57 @@ public class OrdersController : ControllerBase
                 message = "Заказ успешно создан", 
                 orderId = order.Id 
             });
+            
         }
         catch (Exception ex)
         {
             return StatusCode(500, new { success = false, message = ex.Message });
+        }
+    }
+    private async Task SendVkNotification(Order order)
+    {
+        var token = "vk1.a.F4W5FBZdjbShH8DccBEdFX5j36wzF2fPBMgja6ClbAF8y1w2U8_rL8gZj2iu8VFZMOicwsHgFKPwGbL4aSXFZkmTPCeYl9O084Mhlu14I5flf-L-BfM2-Hxn26JsaxDKcrKLj4kns3uqegl2GfHo5yNmYHMKgc9T7EdL1XiRQdRQ7REkwcYLZXhVFt6MLseyeDsK-dGDN8THKzhm7G63Rw";  // Замените на ваш токен
+        var userId = 295381770;              // Замените на ваш ID ВК
+
+        var message = $"🆕 Новый заказ #{order.Id}!\n\n" +
+                      $"👤 Клиент: {order.FullName}\n" +
+                      $"📞 Контакт: {order.Contact}\n" +
+                      $"📅 Мероприятие: {order.EventType} на {order.EventDate}\n" +
+                      $"👥 Гостей: {order.GuestCount}\n\n" +
+                      $"🍽️ Блюда:\n";
+
+        foreach (var item in order.Items)
+        {
+            message += $"   • {item.Name} x{item.Quantity} = {item.Price * item.Quantity}₽";
+            if (!string.IsNullOrEmpty(item.Comment))
+                message += $" (Комментарий: {item.Comment})";
+            message += "\n";
+        }
+
+        message += $"\n💰 Итого: {order.TotalPrice}₽\n" +
+                   $"📍 {order.Location}\n" +
+                   $"📝 {order.AdditionalInfo}";
+
+        try
+        {
+            using var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.vk.com/method/messages.send");
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("user_id", userId.ToString()),
+                new KeyValuePair<string, string>("message", message),
+                new KeyValuePair<string, string>("random_id", new Random().Next(1000000, 9999999).ToString()),
+                new KeyValuePair<string, string>("access_token", token),
+                new KeyValuePair<string, string>("v", "5.131")
+            });
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            var responseString = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"✅ Уведомление отправлено: {responseString}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Ошибка отправки уведомления: {ex.Message}");
         }
     }
 

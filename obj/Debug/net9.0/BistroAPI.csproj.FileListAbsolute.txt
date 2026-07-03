@@ -128,3 +128,5 @@ C:\Практика Клюква\bistro-backend\BistroAPI\obj\Debug\net9.0\refin
 C:\Практика Клюква\bistro-backend\BistroAPI\obj\Debug\net9.0\BistroAPI.pdb
 C:\Практика Клюква\bistro-backend\BistroAPI\obj\Debug\net9.0\BistroAPI.genruntimeconfig.cache
 C:\Практика Клюква\bistro-backend\BistroAPI\obj\Debug\net9.0\ref\BistroAPI.dll
+C:\Практика Клюква\bistro-backend\BistroAPI\bin\Debug\net9.0\railway.json
+C:\Практика Клюква\bistro-backend\BistroAPI\obj\Debug\net9.0\BistroAPI.sourcelink.json
